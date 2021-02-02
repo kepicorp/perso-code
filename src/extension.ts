@@ -17,20 +17,38 @@ export function activate(context: vscode.ExtensionContext) {
 		// The code you place here will be executed every time your command is executed
 
 		const editor = vscode.window.activeTextEditor;
+		const macro = context.globalState.get('macro', '');
 
 		if (editor) {
 			//const position = editor.selection.active;
-			const position = editor.selection.active;
-			editor.edit(editBuilder => {
-				let macro = context.globalState.get('macro', '');
-				editBuilder.insert(position, macro);
+
+			vscode.window.showInputBox({ value: '1', ignoreFocusOut: true}).then(input => {
+				if (input === undefined) {
+					vscode.window.showErrorMessage('Give a number of iteration ');	
+				}
+				else if (isNaN(+input)) {
+					vscode.window.showErrorMessage('Expecting a number ');
+				}
+				else {
+					console.log('my input is '+input);
+					const myArr = Array.from(Array(+input),(x,i)=>i);
+					console.log('array '+myArr);
+					editor.edit(editBuilder => {
+						myArr.forEach((val, index) => {
+							editBuilder.insert(new vscode.Position(editor.selection.active.line+index, 0), macro);
+						});
+						console.log('looping');
+					});
+				}
 			});
+
+			
 		}
 
 	});
 
 	let disposable2 = vscode.commands.registerCommand('star.store', () => {
-		vscode.window.showInputBox({ placeHolder: '*  ', ignoreFocusOut: true}).then(input => {
+		vscode.window.showInputBox({ placeHolder: 'text to replay', ignoreFocusOut: true}).then(input => {
 			context.globalState.update('macro', input);
 			vscode.window.showInformationMessage('Saved macro: ' + input);
 		});

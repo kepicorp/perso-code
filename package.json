@@ -1,8 +1,8 @@
 {
-	"name": "star",
-	"displayName": "star",
-	"description": "Macro recording beta",
-	"version": "0.0.1",
+	"name": "macro",
+	"displayName": "macro",
+	"description": "Basic text macro recording",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.52.0"
 	},
@@ -10,14 +10,15 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:star.helloWorld"
+		"onCommand:star.macro",
+		"onCommand:star.store"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "star.macro",
-				"title": "macro play"
+				"title": "play macro"
 			},
 			{
 				"command": "star.store",
