@@ -9,7 +9,7 @@ Similar to emacs ```ctrl+(```
 1. Store an existing string using ```Record macro```
 2. Replay the string as many time as you want using ```Play macro```
 
-\!\[Replay macro\]\(img/usage.mp4\)
+![Replay macro](img/usage.mp4)
 
 
 ## Release Notes
