@@ -10,19 +10,19 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:star.macro",
-		"onCommand:star.store"
+		"onCommand:macro.play",
+		"onCommand:macro.rec"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "star.macro",
-				"title": "play macro"
+				"command": "macro.play",
+				"title": "Play macro"
 			},
 			{
-				"command": "star.store",
-				"title": "store macro"
+				"command": "macro.rec",
+				"title": "Record macro"
 			}
 		]
 	},

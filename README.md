@@ -6,8 +6,8 @@ Similar to emacs ```ctrl+(```
 
 ## Features
 
-1. Store an existing string using ```store macro```
-2. Replay the string as many time as you want using ```play macro```
+1. Store an existing string using ```Record macro```
+2. Replay the string as many time as you want using ```Play macro```
 
 \!\[Replay macro\]\(images/feature-x.png\)
 
@@ -19,6 +19,6 @@ Similar to emacs ```ctrl+(```
 
 Initial release with basic recording
 
-## Todo
+## Future features
 
 * Implement key-binding
