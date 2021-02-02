@@ -8,7 +8,6 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "star" is now active!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
@@ -30,14 +29,11 @@ export function activate(context: vscode.ExtensionContext) {
 					vscode.window.showErrorMessage('Expecting a number ');
 				}
 				else {
-					console.log('my input is '+input);
 					const myArr = Array.from(Array(+input),(x,i)=>i);
-					console.log('array '+myArr);
 					editor.edit(editBuilder => {
 						myArr.forEach((val, index) => {
 							editBuilder.insert(new vscode.Position(editor.selection.active.line+index, 0), macro);
 						});
-						console.log('looping');
 					});
 				}
 			});
