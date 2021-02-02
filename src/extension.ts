@@ -13,14 +13,31 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('star.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('star.macro', () => {
 		// The code you place here will be executed every time your command is executed
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from star!');
+		const editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			//const position = editor.selection.active;
+			const position = editor.selection.active;
+			editor.edit(editBuilder => {
+				let macro = context.globalState.get('macro', '');
+				editBuilder.insert(position, macro);
+			});
+		}
+
+	});
+
+	let disposable2 = vscode.commands.registerCommand('star.store', () => {
+		vscode.window.showInputBox({ placeHolder: '*  ', ignoreFocusOut: true}).then(input => {
+			context.globalState.update('macro', input);
+			vscode.window.showInformationMessage('Saved macro: ' + input);
+		});
 	});
 
 	context.subscriptions.push(disposable);
+	context.subscriptions.push(disposable2);
 }
 
 // this method is called when your extension is deactivated

@@ -16,8 +16,12 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "star.helloWorld",
-				"title": "Hello World"
+				"command": "star.macro",
+				"title": "macro play"
+			},
+			{
+				"command": "star.store",
+				"title": "store macro"
 			}
 		]
 	},
